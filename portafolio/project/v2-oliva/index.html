@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leonardo Flores — Leonardo Flores — Variación II · Oliva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#1F2416;           /* verde oliva oscuro */
+    --bg-2:#161A0F;
+    --ink:#EDE4C8;          /* pergamino */
+    --ink-mute:rgba(237,228,200,.55);
+    --ink-faint:rgba(237,228,200,.15);
+    --accent:#D4A24C;       /* mostaza envejecida — no-digital */
+    --accent-deep:#A67A2C;
+    --rule:rgba(237,228,200,.18);
+    --nav-h:72px;
+  }
+  html{scroll-behavior:smooth;font-size:16px}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Instrument Serif',serif;
+    font-weight:400;
+    line-height:1.5;
+    overflow-x:hidden;
+    position:relative;
+    min-height:100vh;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+
+  /* ─── EFECTO #1: Grano de película animado ─── */
+  body::before{
+    content:'';
+    position:fixed;inset:-50%;
+    z-index:9998;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.93  0 0 0 0 0.89  0 0 0 0 0.78  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.45'/></svg>");
+    mix-blend-mode:overlay;
+    opacity:.35;
+    animation:grain 1.2s steps(6) infinite;
+  }
+  @keyframes grain{
+    0%{transform:translate(0,0)}
+    17%{transform:translate(-2%,1%)}
+    34%{transform:translate(1%,-2%)}
+    51%{transform:translate(-1%,2%)}
+    68%{transform:translate(2%,1%)}
+    85%{transform:translate(-2%,-1%)}
+    100%{transform:translate(0,0)}
+  }
+
+  /* viñeta sutil */
+  body::after{
+    content:'';
+    position:fixed;inset:0;
+    z-index:9997;pointer-events:none;
+    background:radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.55) 100%);
+  }
+
+  /* ─── EFECTO #2: Cursor ink-trail ─── */
+  #ink-canvas{
+    position:fixed;inset:0;
+    z-index:9999;pointer-events:none;
+  }
+  @media (max-width:900px){#ink-canvas{display:none}}
+
+  /* scrollbar */
+  ::-webkit-scrollbar{width:6px}
+  ::-webkit-scrollbar-track{background:var(--bg-2)}
+  ::-webkit-scrollbar-thumb{background:var(--accent-deep);border-radius:3px}
+
+  /* ─── NAVBAR ─── */
+  nav{
+    position:fixed;top:0;left:0;right:0;
+    height:var(--nav-h);z-index:1000;
+    display:flex;align-items:center;
+    padding:0 clamp(1.5rem,5vw,3.5rem);
+    transition:background .4s,border-color .4s;
+  }
+  nav.scrolled{
+    background:rgba(22,26,15,.88);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav-logo{
+    font-family:'Instrument Serif',serif;
+    font-style:italic;
+    font-size:1.9rem;
+    letter-spacing:-.01em;
+    margin-right:auto;
+    color:var(--ink);
+  }
+  .nav-logo sup{
+    font-size:.55em;
+    color:var(--accent);
+    margin-left:2px;
+    font-style:normal;
+  }
+  .nav-links{display:flex;gap:2.2rem;list-style:none}
+  .nav-links a{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    position:relative;
+    transition:color .25s;
+  }
+  .nav-links a::before{
+    content:attr(data-num);
+    color:var(--accent);
+    margin-right:.4rem;
+    font-size:.65rem;
+  }
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .nav-links a.active::after{
+    content:'';
+    position:absolute;bottom:-6px;left:0;right:0;
+    height:1px;background:var(--accent);
+  }
+  .nav-cta{
+    margin-left:2rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+    padding:.55rem 1.1rem;
+    border:1px solid var(--ink-mute);
+    color:var(--ink);
+    transition:all .25s;
+  }
+  .nav-cta:hover{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:var(--bg);
+  }
+  .mobile-toggle{display:none;flex-direction:column;gap:4px}
+  .mobile-toggle span{display:block;width:22px;height:1px;background:var(--ink)}
+
+  /* ─── FRAME / MARGINALIA ─── */
+  .page-frame{
+    position:fixed;inset:18px;
+    border:1px solid var(--ink-faint);
+    pointer-events:none;z-index:500;
+  }
+  .corner-mark{
+    position:fixed;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;letter-spacing:.14em;
+    color:var(--ink-mute);
+    z-index:501;pointer-events:none;
+  }
+  .corner-mark.tl{top:30px;left:30px}
+  .corner-mark.tr{top:30px;right:30px}
+  .corner-mark.bl{bottom:30px;left:30px;writing-mode:vertical-rl;transform:rotate(180deg)}
+  .corner-mark.br{bottom:30px;right:30px;writing-mode:vertical-rl}
+  @media (max-width:900px){
+    .page-frame,.corner-mark{display:none}
+  }
+
+  /* ─── SECTION WRAPPER ─── */
+  section{
+    padding:clamp(5rem,10vw,9rem) clamp(2rem,6vw,5rem);
+    max-width:1200px;margin:0 auto;
+    position:relative;
+  }
+  .section-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    margin-bottom:2rem;
+    padding-bottom:1rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .section-kicker{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  .section-folio{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;letter-spacing:.15em;
+    color:var(--ink-mute);
+    font-variant-numeric:tabular-nums;
+  }
+  .section-title{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(3.5rem,9vw,7.5rem);
+    font-weight:400;
+    line-height:.95;
+    letter-spacing:-.02em;
+    margin-bottom:4rem;
+  }
+  .section-title em{
+    font-style:italic;
+    color:var(--accent);
+  }
+
+  /* ─── EFECTO #3: Reveal con "ink bleed" letra por letra ─── */
+  .ink-reveal{display:inline-block}
+  .ink-reveal .char{
+    display:inline-block;
+    opacity:0;
+    filter:blur(10px);
+    transform:translateY(.4em);
+    transition:opacity .6s cubic-bezier(.4,0,.2,1),filter .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1);
+  }
+  .ink-reveal.visible .char{opacity:1;filter:blur(0);transform:none}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+  .reveal.visible{opacity:1;transform:none}
+  .rd-1{transition-delay:.12s}.rd-2{transition-delay:.24s}.rd-3{transition-delay:.36s}
+
+  /* ─── HERO ─── */
+  #hero{
+    min-height:100vh;
+    padding:calc(var(--nav-h) + 3rem) clamp(2rem,6vw,5rem) 4rem;
+    max-width:1280px;margin:0 auto;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:4rem;
+    align-items:center;
+    position:relative;
+  }
+  .hero-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-mute);
+    margin-bottom:2.5rem;
+    display:flex;align-items:center;gap:1rem;
+  }
+  .hero-meta .rule{flex:1;height:1px;background:var(--rule);max-width:80px}
+  .hero-meta .status{
+    display:inline-flex;align-items:center;gap:.5rem;
+    color:var(--accent);
+  }
+  .hero-meta .status::before{
+    content:'';width:6px;height:6px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 0 var(--accent);
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(212,162,76,.5)}
+    50%{box-shadow:0 0 0 8px rgba(212,162,76,0)}
+  }
+  .hero-name{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(4rem,11vw,9.5rem);
+    line-height:.92;
+    letter-spacing:-.03em;
+    margin-bottom:1rem;
+  }
+  .hero-name .given{display:block}
+  .hero-name .family{
+    display:block;
+    font-style:italic;
+    color:var(--accent);
+    margin-left:1.2em;
+  }
+  .hero-role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.85rem;
+    letter-spacing:.05em;
+    color:var(--ink-mute);
+    margin-bottom:2rem;
+    padding-left:1rem;
+    border-left:2px solid var(--accent);
+  }
+  .hero-role em{color:var(--ink);font-style:normal}
+  .hero-tagline{
+    font-size:clamp(1.3rem,2.2vw,1.7rem);
+    color:var(--ink);
+    max-width:520px;
+    margin-bottom:2.5rem;
+    font-style:italic;
+    line-height:1.4;
+  }
+  .hero-tagline::before{
+    content:'“';
+    font-size:2.5em;
+    line-height:0;
+    vertical-align:-.3em;
+    color:var(--accent);
+    margin-right:.1em;
+  }
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    padding:.9rem 1.8rem;
+    transition:all .25s;
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:var(--bg);
+  }
+  .btn-primary:hover{background:var(--ink);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--accent-deep)}
+  .btn-ghost{
+    border:1px solid var(--ink-mute);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--accent-deep)}
+  .btn .arrow{display:inline-block;transition:transform .25s}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  .hero-socials{display:flex;gap:1.2rem;margin-top:2rem}
+  .hero-social{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.15em;
+    color:var(--ink-mute);
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:all .25s;
+  }
+  .hero-social:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+  /* ─── EFECTO #4: Foto con doble capa + posterización ─── */
+  .hero-portrait{
+    position:relative;
+    aspect-ratio:3/4;
+    max-width:380px;
+    margin-left:auto;
+  }
+  .portrait-frame{
+    position:absolute;inset:0;
+    border:1px solid var(--ink-faint);
+    transform:translate(18px,18px);
+    z-index:0;
+  }
+  .portrait-img{
+    position:relative;z-index:1;
+    width:100%;height:100%;
+    overflow:hidden;
+    background:var(--bg-2);
+  }
+  .portrait-img img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:center top;
+    /* Trata la foto como impresión duotono burdeos */
+    filter:grayscale(1) contrast(1.1) brightness(.9);
+    mix-blend-mode:luminosity;
+  }
+  .portrait-img::before{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(31,36,22,.2),rgba(212,162,76,.15));
+    mix-blend-mode:multiply;
+    z-index:2;
+  }
+  .portrait-caption{
+    position:absolute;
+    bottom:-2.5rem;right:0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;letter-spacing:.15em;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+  }
+  .portrait-caption .fig{color:var(--accent);margin-right:.5rem}
+  .portrait-marginalia{
+    position:absolute;
+    top:-1rem;left:-3.5rem;
+    font-family:'Instrument Serif',serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--ink-mute);
+    transform:rotate(-12deg);
+    width:3rem;text-align:right;
+  }
+  @media (max-width:900px){
+    #hero{grid-template-columns:1fr;gap:3rem}
+    .hero-portrait{max-width:280px;margin:0 auto}
+    .portrait-marginalia{display:none}
+  }
+
+  /* ─── MARQUEE (sutil, editorial) ─── */
+  .strip{
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    overflow:hidden;
+    padding:1.1rem 0;
+  }
+  .strip-track{
+    display:flex;width:max-content;
+    animation:scroll 60s linear infinite;
+  }
+  .strip-item{
+    font-family:'Instrument Serif',serif;
+    font-style:italic;
+    font-size:1.6rem;
+    color:var(--ink-mute);
+    padding:0 2.5rem;
+    white-space:nowrap;
+    position:relative;
+  }
+  .strip-item::after{
+    content:'❋';
+    position:absolute;right:0;top:50%;
+    transform:translateY(-50%);
+    color:var(--accent);
+    font-style:normal;
+    font-size:.8em;
+  }
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ─── PROJECTS ─── */
+  .projects{display:flex;flex-direction:column}
+  .proj{
+    display:grid;
+    grid-template-columns:80px 1fr 1fr;
+    gap:3rem;
+    padding:3rem 0;
+    border-top:1px solid var(--rule);
+    position:relative;
+    transition:background .3s;
+  }
+  .proj:hover{background:rgba(212,162,76,.04)}
+  .proj:last-child{border-bottom:1px solid var(--rule)}
+  .proj-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.75rem;letter-spacing:.1em;
+    color:var(--accent);
+    padding-top:.5rem;
+  }
+  .proj-title{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(1.8rem,3.5vw,2.8rem);
+    line-height:1.05;
+    letter-spacing:-.01em;
+  }
+  .proj-title em{font-style:italic;color:var(--accent)}
+  .proj-tags{
+    display:flex;flex-wrap:wrap;gap:.5rem;
+    margin-top:.8rem;
+  }
+  .proj-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-mute);
+    padding:.2rem .5rem;
+    border:1px solid var(--ink-faint);
+  }
+  .proj-body p{
+    font-size:1.05rem;
+    color:var(--ink-mute);
+    line-height:1.6;
+    margin-bottom:1rem;
+  }
+  .proj-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent);
+    padding-top:.8rem;
+    border-top:1px dashed var(--rule);
+  }
+  @media (max-width:900px){
+    .proj{grid-template-columns:1fr;gap:1rem}
+  }
+
+  /* ─── ABOUT ─── */
+  .about-wrap{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:5rem;
+    align-items:start;
+  }
+  .about-aside{
+    position:sticky;top:calc(var(--nav-h) + 2rem);
+  }
+  .about-degree{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:1rem;
+    display:block;
+  }
+  .about-drop{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(1.3rem,2.2vw,1.6rem);
+    line-height:1.55;
+    color:var(--ink);
+    margin-bottom:1.5rem;
+  }
+  .about-drop::first-letter{
+    font-size:4.5em;
+    float:left;
+    line-height:.85;
+    margin:.05em .12em 0 -.05em;
+    color:var(--accent);
+    font-style:italic;
+  }
+  .about-body p{
+    font-size:1.08rem;
+    line-height:1.7;
+    color:var(--ink-mute);
+    margin-bottom:1.4rem;
+  }
+  .about-body p strong{color:var(--ink);font-weight:400;font-style:italic}
+  .pill-row{
+    display:flex;flex-wrap:wrap;gap:.5rem;
+    margin-top:2rem;
+  }
+  .pill{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;letter-spacing:.1em;
+    padding:.45rem .9rem;
+    border:1px solid var(--rule);
+    color:var(--ink-mute);
+    transition:all .25s;
+  }
+  .pill:hover{border-color:var(--accent);color:var(--accent)}
+  @media (max-width:900px){
+    .about-wrap{grid-template-columns:1fr;gap:2rem}
+    .about-aside{position:static}
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .timeline{
+    display:flex;flex-direction:column;
+  }
+  .tl-item{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:3rem;
+    padding:2.5rem 0;
+    border-top:1px solid var(--rule);
+  }
+  .tl-item:last-child{border-bottom:1px solid var(--rule)}
+  .tl-date{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  .tl-role{
+    font-family:'Instrument Serif',serif;
+    font-size:1.6rem;
+    line-height:1.2;
+    margin-bottom:.3rem;
+  }
+  .tl-role em{font-style:italic;color:var(--accent)}
+  .tl-company{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.75rem;letter-spacing:.1em;
+    color:var(--ink-mute);
+    margin-bottom:1rem;
+  }
+  .tl-desc{
+    font-size:1rem;
+    color:var(--ink-mute);
+    line-height:1.65;
+    max-width:620px;
+  }
+  @media (max-width:900px){
+    .tl-item{grid-template-columns:1fr;gap:.8rem}
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0 4rem;
+  }
+  .skills-col-title{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent);
+    padding-bottom:.8rem;
+    border-bottom:1px solid var(--rule);
+    margin-bottom:.5rem;
+  }
+  .skill-row{
+    font-family:'Instrument Serif',serif;
+    font-size:1.2rem;
+    padding:.6rem 0;
+    border-bottom:1px solid var(--ink-faint);
+    color:var(--ink);
+    display:flex;justify-content:space-between;align-items:baseline;
+    transition:color .25s,padding-left .25s;
+  }
+  .skill-row:hover{color:var(--accent);padding-left:.5rem}
+  .skill-row .lvl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;
+    color:var(--ink-mute);
+    letter-spacing:.1em;
+  }
+  @media (max-width:900px){
+    .skills-grid{grid-template-columns:1fr;gap:2rem}
+  }
+
+  /* ─── CONTACT ─── */
+  #contact{
+    background:var(--bg-2);
+    border-top:1px solid var(--rule);
+    padding:clamp(5rem,10vw,8rem) clamp(2rem,6vw,5rem);
+  }
+  .contact-inner{
+    max-width:1200px;margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5rem;align-items:start;
+  }
+  .contact-title{
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(3rem,6vw,5rem);
+    line-height:.95;
+    margin-bottom:1.5rem;
+  }
+  .contact-title em{font-style:italic;color:var(--accent)}
+  .contact-lede{
+    font-size:1.15rem;
+    color:var(--ink-mute);
+    line-height:1.6;
+    margin-bottom:2.5rem;
+    max-width:420px;
+  }
+  .contact-email{
+    display:inline-block;
+    font-family:'Instrument Serif',serif;
+    font-size:clamp(1.2rem,2vw,1.6rem);
+    font-style:italic;
+    color:var(--accent);
+    border-bottom:1px solid var(--accent);
+    padding-bottom:.2rem;
+    margin-bottom:2.5rem;
+    transition:color .25s;
+  }
+  .contact-email:hover{color:var(--ink)}
+  .contact-form{display:flex;flex-direction:column;gap:1.2rem}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+  .form-group{display:flex;flex-direction:column;gap:.4rem}
+  .form-group label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-mute);
+  }
+  .form-group input,.form-group textarea{
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--rule);
+    padding:.7rem 0;
+    font-family:'Instrument Serif',serif;
+    font-size:1.1rem;
+    color:var(--ink);
+    outline:none;
+    resize:none;
+    transition:border-color .25s;
+  }
+  .form-group input::placeholder,.form-group textarea::placeholder{
+    color:var(--ink-faint);
+    font-style:italic;
+  }
+  .form-group input:focus,.form-group textarea:focus{
+    border-bottom-color:var(--accent);
+  }
+  .form-group textarea{min-height:100px}
+  .form-submit{
+    align-self:flex-start;
+    margin-top:1rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    padding:.9rem 1.8rem;
+    background:var(--accent);
+    color:var(--bg);
+    transition:all .25s;
+  }
+  .form-submit:hover{background:var(--ink);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--accent-deep)}
+  @media (max-width:900px){
+    .contact-inner{grid-template-columns:1fr;gap:3rem}
+    .form-row{grid-template-columns:1fr}
+  }
+
+  /* footer */
+  footer{
+    text-align:center;
+    padding:2rem;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-mute);
+    border-top:1px solid var(--rule);
+  }
+  footer em{color:var(--accent);font-style:normal}
+
+  @media (max-width:640px){
+    .nav-links,.nav-cta{display:none}
+    .mobile-toggle{display:flex}
+  }
+</style>
+</head>
+<body>
+
+<!-- Frame & marginalia -->
+<div class="page-frame"></div>
+<div class="corner-mark tl">LF · PORTAFOLIO MMXXVI</div>
+<div class="corner-mark tr">VOL II · OLIVA · MMXXVI</div>
+<div class="corner-mark bl">MONTERREY ⟶ MX</div>
+<div class="corner-mark br">IMPRESO EN PANTALLA</div>
+
+<!-- Ink trail canvas -->
+<canvas id="ink-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">Leonardo<em style="color:var(--accent);font-style:italic">F.</em><sup>*</sup></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a data-num="i" href="#projects">Obras</a></li>
+    <li><a data-num="ii" href="#about">Retrato</a></li>
+    <li><a data-num="iii" href="#experience">Trayectoria</a></li>
+    <li><a data-num="iv" href="#skills">Oficio</a></li>
+    <li><a data-num="v" href="#contact">Correspondencia</a></li>
+  </ul>
+  <a href="mailto:loor200529@gmail.com" class="nav-cta">Escríbeme</a>
+  <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div>
+    <div class="hero-meta">
+      <span class="status">Disponible — Abril 2026</span>
+      <span class="rule"></span>
+      <span>№ 001</span>
+    </div>
+    <h1 class="hero-name">
+      <span class="given ink-reveal" data-text="Leonardo"></span>
+      <span class="family ink-reveal" data-text="Flores."></span>
+    </h1>
+    <div class="hero-role">
+      <em>Ingeniero de software</em> &nbsp;·&nbsp; Tec de Monterrey
+    </div>
+    <p class="hero-tagline">
+      Traduzco necesidades de clientes en sistemas que de verdad se usan — sin decoración innecesaria.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">
+        Ver obra <span class="arrow">→</span>
+      </a>
+      <a href="../../../LeonardoFloresCV.pdf" class="btn btn-ghost" download>
+        Descargar CV <span class="arrow">↓</span>
+      </a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://github.com/Leonardou-lab" target="_blank" class="hero-social">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/leonardo-andré-flores-mendoza-2519a2366" target="_blank" class="hero-social">LinkedIn ↗</a>
+      <a href="mailto:loor200529@gmail.com" class="hero-social">Email ↗</a>
+    </div>
+  </div>
+
+  <div class="hero-portrait">
+    <div class="portrait-marginalia">fig. i —<br>el autor</div>
+    <div class="portrait-frame"></div>
+    <div class="portrait-img">
+      <img src="../assets/YP.jpg" alt="Leonardo Flores">
+    </div>
+    <div class="portrait-caption"><span class="fig">Fig. I</span>Leonardo, 2026</div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span class="strip-item">Software developer</span>
+    <span class="strip-item">Computer Technologies</span>
+    <span class="strip-item">Tec de Monterrey</span>
+    <span class="strip-item">Envía código real</span>
+    <span class="strip-item">Bilingüe</span>
+    <span class="strip-item">Disponible</span>
+    <span class="strip-item">Software developer</span>
+    <span class="strip-item">Computer Technologies</span>
+    <span class="strip-item">Tec de Monterrey</span>
+    <span class="strip-item">Envía código real</span>
+    <span class="strip-item">Bilingüe</span>
+    <span class="strip-item">Disponible</span>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-head reveal">
+    <span class="section-kicker">§ I — Obras selectas</span>
+    <span class="section-folio">pp. 004 — 009</span>
+  </div>
+  <h2 class="section-title reveal rd-1">Cosas que <em>he construido.</em></h2>
+
+  <div class="projects">
+
+    <article class="proj reveal">
+      <div class="proj-num">№ 001</div>
+      <div>
+        <h3 class="proj-title">Bono — <em>Huella de carbono</em></h3>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">UI Design</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <p>Gané un hackathon construyendo una plataforma SaaS que calcula la huella de carbono corporativa e industrial. La victoria se convirtió en un internship donde diseñé y colaboré en el desarrollo del producto real, contribuyendo específicamente al frontend.</p>
+        <div class="proj-meta">Hackathon → Frontend Intern</div>
+      </div>
+    </article>
+
+    <article class="proj reveal rd-1">
+      <div class="proj-num">№ 002</div>
+      <div>
+        <h3 class="proj-title">Análisis <em>algorítmico</em></h3>
+        <div class="proj-tags">
+          <span class="proj-tag">C++</span>
+          <span class="proj-tag">Big O</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <p>Sistema de gestión de logs en C++ sobre ~16,800 entradas de seguridad reales con búsqueda por timestamp. Enfrenté inserción binaria (O(n) por inserción, siempre ordenada) contra Merge Sort al cargar (O(n log n) inicial) — ambos con búsqueda binaria. Los resultados empíricos confirmaron la teoría dentro de un margen medible.</p>
+        <div class="proj-meta">16,800 entradas · Teoría verificada</div>
+      </div>
+    </article>
+
+    <article class="proj reveal rd-2">
+      <div class="proj-num">№ 003</div>
+      <div>
+        <h3 class="proj-title"><em>Tecflix</em></h3>
+        <div class="proj-tags">
+          <span class="proj-tag">C++</span>
+          <span class="proj-tag">OOP</span>
+          <span class="proj-tag">CSV</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <p>Catálogo de plataforma de streaming en C++ aplicando herencia y polimorfismo mediante una clase base Tecflix y una clase derivada Movies. Persistencia via archivo CSV.</p>
+        <div class="proj-meta">C++ · OOP · Persistencia CSV</div>
+      </div>
+    </article>
+
+    <article class="proj reveal">
+      <div class="proj-num">№ 004</div>
+      <div>
+        <h3 class="proj-title">Downhill <em>México</em></h3>
+        <div class="proj-tags">
+          <span class="proj-tag">HTML/CSS/JS</span>
+          <span class="proj-tag">Google Maps API</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <p>Sitio oficial de Downhill México — la competencia de ciclismo de montaña más grande del país. Construí y entregué la plataforma completa para la organización: perfiles de atletas, calendario de eventos y mapas en vivo.</p>
+        <div class="proj-meta">Plataforma oficial · En producción</div>
+      </div>
+    </article>
+
+    <article class="proj reveal rd-1">
+      <div class="proj-num">№ 005</div>
+      <div>
+        <h3 class="proj-title">Motor de <em>recomendación</em></h3>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">ML</span>
+          <span class="proj-tag">Pandas</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <p>Motor de recomendación musical usando similitud coseno sobre 500+ tracks.</p>
+        <div class="proj-meta">500+ tracks analizados</div>
+      </div>
+    </article>
+
+    <article class="proj reveal rd-2">
+      <div class="proj-num">№ 006</div>
+      <div>
+        <h3 class="proj-title">Modelado <em>computacional</em></h3>
+        <div class="proj-tags">
+          <span class="proj-tag">MATLAB</span>
+          <span class="proj-tag">Numerical</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <p>Simulación de campos magnéticos validando resultados físicos mediante el método de Euler mejorado.</p>
+        <div class="proj-meta">Resultados físicamente validados</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-head reveal">
+    <span class="section-kicker">§ II — Retrato</span>
+    <span class="section-folio">p. 010</span>
+  </div>
+  <h2 class="section-title reveal rd-1">Quién <em>soy.</em></h2>
+
+  <div class="about-wrap">
+    <aside class="about-aside reveal rd-1">
+      <span class="about-degree">Ingeniería en Tecnologías Computacionales<br>Tecnológico de Monterrey</span>
+      <div class="pill-row">
+        <span class="pill">Cliente primero</span>
+        <span class="pill">Envía bajo presión</span>
+        <span class="pill">Autodidacta</span>
+        <span class="pill">ES / EN</span>
+      </div>
+    </aside>
+
+    <div class="about-body reveal rd-2">
+      <p class="about-drop">Convierto requerimientos en sistemas — desde entender qué necesita realmente un cliente hasta entregar algo en lo que pueda confiar. Gané un hackathon de empresa, entré directo a un internship, y <strong>he enviado código de producción en un producto real.</strong></p>
+      <p>Trabajo en equipo por default — las mejores soluciones vienen de gente bien coordinada, no de contribuidores solitarios. Lidero cuando el proyecto necesita dirección, y me hago a un lado cuando alguien más tiene la mejor respuesta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-head reveal">
+    <span class="section-kicker">§ III — Trayectoria</span>
+    <span class="section-folio">p. 011</span>
+  </div>
+  <h2 class="section-title reveal rd-1">Dónde <em>he enviado.</em></h2>
+
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-date">Jun — Ago<br>2025</div>
+      <div>
+        <h3 class="tl-role">Intern — <em>Frontend Developer</em></h3>
+        <div class="tl-company">Bono</div>
+        <p class="tl-desc">Diseñé y colaboré en el desarrollo de una plataforma SaaS de huella de carbono, contribuyendo específicamente al frontend. El rol llegó directamente por ganar el hackathon de la empresa con el concepto original de la plataforma.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal rd-1">
+      <div class="tl-date">Jun 2025<br>— presente</div>
+      <div>
+        <h3 class="tl-role">Administrativo — <em>COPARMEX</em></h3>
+        <div class="tl-company">Capítulo Universitario</div>
+        <p class="tl-desc">Co-organicé eventos de networking empresarial conectando talento del Tec con líderes de la industria. Gestioné logística, comunicaciones y coordinación entre departamentos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-head reveal">
+    <span class="section-kicker">§ IV — Oficio</span>
+    <span class="section-folio">p. 012</span>
+  </div>
+  <h2 class="section-title reveal rd-1">Con qué <em>trabajo.</em></h2>
+
+  <div class="skills-grid">
+    <div class="reveal">
+      <div class="skills-col-title">Lenguajes</div>
+      <div class="skill-row">C++ <span class="lvl">PRIM.</span></div>
+      <div class="skill-row">Python <span class="lvl">FLU.</span></div>
+      <div class="skill-row">JavaScript <span class="lvl">FLU.</span></div>
+      <div class="skill-row">HTML / CSS <span class="lvl">FLU.</span></div>
+      <div class="skill-row">SQL <span class="lvl">INT.</span></div>
+    </div>
+    <div class="reveal rd-1">
+      <div class="skills-col-title">Herramientas</div>
+      <div class="skill-row">Git <span class="lvl">FLU.</span></div>
+      <div class="skill-row">React <span class="lvl">INT.</span></div>
+      <div class="skill-row">Node.js <span class="lvl">INT.</span></div>
+      <div class="skill-row">VS Code <span class="lvl">DIARIO</span></div>
+      <div class="skill-row">REST APIs <span class="lvl">FLU.</span></div>
+    </div>
+    <div class="reveal rd-2">
+      <div class="skills-col-title">Conceptos</div>
+      <div class="skill-row">OOP <span class="lvl">SÓLIDO</span></div>
+      <div class="skill-row">Estructuras <span class="lvl">SÓLIDO</span></div>
+      <div class="skill-row">Algoritmos <span class="lvl">SÓLIDO</span></div>
+      <div class="skill-row">IoT <span class="lvl">INT.</span></div>
+      <div class="skill-row">CCNA <span class="lvl">CERT.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <h2 class="contact-title">¿Tienes una <em>idea</em>?<br>Construyámosla.</h2>
+      <p class="contact-lede">Busco oportunidades de internship y proyectos interesantes. Si tienes algo en mente, escríbeme.</p>
+      <a href="mailto:loor200529@gmail.com" class="contact-email">loor200529@gmail.com</a>
+      <div class="hero-socials">
+        <a href="https://github.com/Leonardou-lab" target="_blank" class="hero-social">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/leonardo-andré-flores-mendoza-2519a2366" target="_blank" class="hero-social">LinkedIn ↗</a>
+      </div>
+    </div>
+    <form class="contact-form reveal rd-1" onsubmit="handleForm(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" name="name" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label>Correo</label>
+          <input type="email" name="email" placeholder="tu@correo.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea name="message" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+      </div>
+      <button class="form-submit" type="submit">Enviar mensaje →</button>
+    </form>
+  </div>
+  <footer>Hecho en <em>Monterrey</em> · MMXXVI · LF</footer>
+</section>
+
+<script>
+  /* ─── Ink trail cursor (efecto #1) ─── */
+  (function(){
+    const canvas = document.getElementById('ink-canvas');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w,h;
+    function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}
+    resize();
+    addEventListener('resize',resize);
+
+    const drops = [];
+    let lastX=0,lastY=0,lastT=0;
+    addEventListener('mousemove',e=>{
+      const now=performance.now();
+      const dt=now-lastT;
+      if(dt<16)return;
+      const dx=e.clientX-lastX, dy=e.clientY-lastY;
+      const speed=Math.min(Math.sqrt(dx*dx+dy*dy)/Math.max(dt,1),3);
+      drops.push({
+        x:e.clientX,y:e.clientY,
+        r:2+speed*4,
+        life:1,
+        vx:dx*.02,vy:dy*.02
+      });
+      if(drops.length>80)drops.shift();
+      lastX=e.clientX;lastY=e.clientY;lastT=now;
+    });
+
+    function loop(){
+      ctx.clearRect(0,0,w,h);
+      for(let i=drops.length-1;i>=0;i--){
+        const d=drops[i];
+        d.life-=0.018;
+        d.x+=d.vx;d.y+=d.vy;
+        d.vx*=.96;d.vy*=.96;
+        if(d.life<=0){drops.splice(i,1);continue}
+        const alpha=d.life*.5;
+        ctx.beginPath();
+        ctx.arc(d.x,d.y,d.r*d.life,0,Math.PI*2);
+        ctx.fillStyle=`rgba(212,162,76,${alpha})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(loop);
+    }
+    loop();
+  })();
+
+  /* ─── Nav scroll ─── */
+  const navbar = document.getElementById('navbar');
+  const sections = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  addEventListener('scroll',()=>{
+    navbar.classList.toggle('scrolled',scrollY>10);
+    let cur='';
+    sections.forEach(s=>{if(scrollY>=s.offsetTop-140)cur=s.id});
+    navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  },{passive:true});
+
+  /* ─── Ink reveal (efecto #4) ─── */
+  document.querySelectorAll('.ink-reveal').forEach(el=>{
+    const text = el.dataset.text || el.textContent;
+    el.innerHTML='';
+    [...text].forEach((ch,i)=>{
+      const s=document.createElement('span');
+      s.className='char';
+      s.textContent=ch===' '?'\u00A0':ch;
+      s.style.transitionDelay=(i*0.04)+'s';
+      el.appendChild(s);
+    });
+    // Hero ink-reveals are in view on load — trigger immediately
+    requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('visible')));
+  });
+
+  /* Reveal observer */
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal,.ink-reveal').forEach(el=>io.observe(el));
+
+  /* Mobile */
+  document.getElementById('mobileToggle')?.addEventListener('click',()=>{
+    document.getElementById('navLinks').classList.toggle('mobile-open');
+  });
+
+  /* Form */
+  function handleForm(e){
+    e.preventDefault();
+    const btn=e.target.querySelector('.form-submit');
+    btn.textContent='Mensaje enviado ✓';
+    setTimeout(()=>{btn.textContent='Enviar mensaje →';e.target.reset()},3500);
+  }
+</script>
+</body>
+</html>

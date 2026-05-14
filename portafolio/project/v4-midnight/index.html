@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leonardo Flores — Software Engineer</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Leonardo Flores — Midnight</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fraktion (Pangram Pangram) via Fontshare free mirror: "Satoshi" has very similar geometry; for fidelity we load Fraktion-adjacent "Switzer" + mono -->
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&f[]=jetbrains-mono@400&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#1A2420;
-    --bg-2:#121A17;
-    --surface:#1F2A25;
-    --ink:#E8EDE6;
-    --ink-mute:rgba(232,237,230,.58);
-    --ink-faint:rgba(232,237,230,.12);
-    --accent:#8FA88C;
-    --accent-bright:#B8CEB3;
-    --rule:rgba(232,237,230,.1);
+    --bg:#141821;             /* midnight azul-gris muy oscuro */
+    --bg-2:#0E1118;
+    --surface:#1A1F2A;
+    --ink:#EAE6E0;            /* off-white cálido */
+    --ink-mute:rgba(234,230,224,.58);
+    --ink-faint:rgba(234,230,224,.12);
+    --accent:#E89D7C;         /* coral mate */
+    --accent-bright:#F0B9A0;
+    --rule:rgba(234,230,224,.1);
     --nav-h:64px;
   }
   html{scroll-behavior:smooth;font-size:16px}
@@ -33,15 +33,15 @@
   img{display:block;max-width:100%}
   button{font-family:inherit;color:inherit;background:none;border:none;cursor:none}
 
-  /* film grain */
+  /* grano sutil */
   body::before{
     content:'';position:fixed;inset:0;
     z-index:9998;pointer-events:none;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.91  0 0 0 0 0.93  0 0 0 0 0.90  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.89  0 0 0 0 0.86  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
     mix-blend-mode:overlay;opacity:.22;
   }
 
-  /* Cursor */
+  /* Cursor minimalista: círculo con delay + punto */
   #c-outline{
     position:fixed;top:0;left:0;
     width:28px;height:28px;
@@ -60,7 +60,7 @@
     transform:translate(-50%,-50%);
     pointer-events:none;z-index:10000;
   }
-  #c-outline.hover{width:48px;height:48px;background:rgba(143,168,140,.15)}
+  #c-outline.hover{width:48px;height:48px;background:rgba(232,157,124,.15)}
   @media (max-width:900px){
     body{cursor:auto}
     button,a{cursor:pointer}
@@ -80,7 +80,7 @@
     transition:background .35s,border-color .35s,backdrop-filter .35s;
   }
   nav.scrolled{
-    background:rgba(18,26,23,.8);
+    background:rgba(14,17,24,.8);
     backdrop-filter:blur(20px) saturate(1.2);
     border-bottom:1px solid var(--rule);
   }
@@ -93,7 +93,7 @@
   .nav-logo .mark{
     width:8px;height:8px;border-radius:50%;
     background:var(--accent);
-    box-shadow:0 0 0 3px rgba(143,168,140,.18);
+    box-shadow:0 0 0 3px rgba(232,157,124,.2);
   }
   .nav-links{display:flex;gap:2.2rem;list-style:none}
   .nav-links a{
@@ -121,7 +121,7 @@
   }
   .nav-cta:hover{
     border-color:var(--accent);
-    background:rgba(143,168,140,.08);
+    background:rgba(232,157,124,.08);
   }
   .mobile-toggle{display:none;flex-direction:column;gap:4px}
   .mobile-toggle span{display:block;width:20px;height:1.5px;background:var(--ink)}
@@ -203,8 +203,8 @@
   }
   .hero-meta .sep{width:1px;height:12px;background:var(--rule)}
   @keyframes pulse{
-    0%,100%{box-shadow:0 0 0 0 rgba(184,206,179,.5)}
-    50%{box-shadow:0 0 0 8px rgba(184,206,179,0)}
+    0%,100%{box-shadow:0 0 0 0 rgba(240,185,160,.5)}
+    50%{box-shadow:0 0 0 8px rgba(240,185,160,0)}
   }
   .hero-name{
     font-family:'Switzer',sans-serif;
@@ -239,7 +239,7 @@
     border:1px solid var(--ink-faint);
     color:var(--ink);
   }
-  .btn-ghost:hover{border-color:var(--accent);background:rgba(143,168,140,.08);transform:translateY(-2px)}
+  .btn-ghost:hover{border-color:var(--accent);background:rgba(232,157,124,.08);transform:translateY(-2px)}
   .btn .arrow{transition:transform .25s;display:inline-block}
   .btn:hover .arrow{transform:translate(3px,-1px)}
 
@@ -253,7 +253,7 @@
   .hero-social:hover{color:var(--accent-bright)}
   .hero-social span{color:var(--ink-faint);margin-left:.4rem}
 
-  /* Portrait */
+  /* Portrait minimal */
   .hero-portrait{
     position:relative;
     aspect-ratio:3/4;max-width:340px;margin-left:auto;
@@ -272,7 +272,7 @@
   }
   .portrait-img::after{
     content:'';position:absolute;inset:0;
-    background:linear-gradient(180deg,transparent 50%,rgba(26,36,32,.35));
+    background:linear-gradient(180deg,transparent 50%,rgba(20,24,33,.35));
     mix-blend-mode:multiply;
   }
   .portrait-caption{
@@ -288,7 +288,7 @@
     .hero-portrait{max-width:260px;margin:0 auto}
   }
 
-  /* ─── STRIP ─── */
+  /* ─── STRIP (minimal) ─── */
   .strip{
     border-top:1px solid var(--rule);
     border-bottom:1px solid var(--rule);
@@ -520,14 +520,6 @@
   footer em{color:var(--accent);font-style:normal}
 
   @media (max-width:640px){.nav-links,.nav-cta{display:none}.mobile-toggle{display:flex}}
-  .nav-links.mobile-open{
-    display:flex!important;flex-direction:column;
-    position:absolute;top:var(--nav-h);left:0;right:0;
-    background:rgba(18,26,23,.98);
-    padding:1.5rem 2rem;
-    border-top:1px solid var(--rule);
-    gap:1.2rem;
-  }
 </style>
 </head>
 <body>
@@ -540,13 +532,13 @@
 <nav id="navbar">
   <a class="nav-logo" href="#"><span class="mark"></span>Leonardo Flores</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#experience">Experiencia</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">Contacto</a></li>
   </ul>
-  <a href="mailto:loor200529@gmail.com" class="nav-cta">Let's Work →</a>
+  <a href="mailto:loor200529@gmail.com" class="nav-cta">Escríbeme →</a>
   <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
 </nav>
 
@@ -554,35 +546,35 @@
 <section id="hero">
   <div class="hero-left">
     <div class="hero-meta">
-      <span class="status" id="availability-status">Available</span>
+      <span class="status">Disponible — Abril 2026</span>
       <span class="sep"></span>
-      <span>CDMX, Mexico</span>
+      <span>Monterrey, MX</span>
       <span class="sep"></span>
-      <span>Index 001</span>
+      <span>Índice 001</span>
     </div>
     <h1 class="hero-name">
       <span class="line1 ink-reveal" data-text="Leonardo"></span>
       <span class="line2 ink-reveal" data-text="Flores."></span>
     </h1>
     <p class="hero-role">
-      <b>Computer Technologies Engineer</b>. I turn requirements into systems people actually use. No unnecessary decoration.
+      Ingeniero en <b>Tecnologías Computacionales</b> — convierto requerimientos en sistemas que de verdad se usan. Sin decoración innecesaria.
     </p>
     <div class="hero-ctas">
-      <a href="#projects" class="btn btn-primary">See Work <span class="arrow">→</span></a>
-      <a href="LeonardoFloresCV.pdf" class="btn btn-ghost" download>Download CV <span class="arrow">↓</span></a>
+      <a href="#projects" class="btn btn-primary">Ver proyectos <span class="arrow">→</span></a>
+      <a href="../../../LeonardoFloresCV.pdf" class="btn btn-ghost" download>Descargar CV <span class="arrow">↓</span></a>
     </div>
     <div class="hero-socials">
       <a href="https://github.com/Leonardou-lab" target="_blank" class="hero-social">GitHub<span>↗</span></a>
-      <a href="https://www.linkedin.com/in/leonardo-andr%C3%A9-flores-mendoza-2519a2366" target="_blank" class="hero-social">LinkedIn<span>↗</span></a>
+      <a href="https://www.linkedin.com/in/leonardo-andré-flores-mendoza-2519a2366" target="_blank" class="hero-social">LinkedIn<span>↗</span></a>
       <a href="mailto:loor200529@gmail.com" class="hero-social">Email<span>↗</span></a>
     </div>
   </div>
 
   <div class="hero-portrait">
-    <div class="portrait-img"><img src="YP.jpg" alt="Leonardo Flores"></div>
+    <div class="portrait-img"><img src="../assets/YP.jpg" alt="Leonardo Flores"></div>
     <div class="portrait-caption">
-      <span><span class="idx">001</span> — Portrait, 2026</span>
-      <span>Mexico City</span>
+      <span><span class="idx">001</span> — Retrato, 2026</span>
+      <span>MTY · MX</span>
     </div>
   </div>
 </section>
@@ -593,55 +585,55 @@
     <span class="strip-item">Software Engineer</span>
     <span class="strip-item">Computer Technologies</span>
     <span class="strip-item">Tec de Monterrey</span>
-    <span class="strip-item">Ships Real Code</span>
-    <span class="strip-item">Bilingual ES · EN</span>
-    <span class="strip-item">Available</span>
+    <span class="strip-item">Envía código real</span>
+    <span class="strip-item">Bilingüe ES · EN</span>
+    <span class="strip-item">Disponible</span>
     <span class="strip-item">Software Engineer</span>
     <span class="strip-item">Computer Technologies</span>
     <span class="strip-item">Tec de Monterrey</span>
-    <span class="strip-item">Ships Real Code</span>
-    <span class="strip-item">Bilingual ES · EN</span>
-    <span class="strip-item">Available</span>
+    <span class="strip-item">Envía código real</span>
+    <span class="strip-item">Bilingüe ES · EN</span>
+    <span class="strip-item">Disponible</span>
   </div>
 </div>
 
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-head reveal">
-    <span class="section-kicker">Projects</span>
+    <span class="section-kicker">Proyectos</span>
     <span class="section-num">01 / 05</span>
   </div>
-  <h2 class="section-title reveal rd-1">Things I've <span class="muted">built.</span></h2>
+  <h2 class="section-title reveal rd-1">Cosas que <span class="muted">he construido.</span></h2>
 
   <div class="projects">
 
     <article class="proj reveal">
       <div class="proj-num">001</div>
       <div>
-        <h3 class="proj-title">Bono, Carbon Footprint Platform</h3>
+        <h3 class="proj-title">Bono — Huella de carbono</h3>
         <div class="proj-tags">
           <span class="proj-tag">Python</span>
-          <span class="proj-tag">UI Design</span>
+          <span class="proj-tag">UI</span>
         </div>
       </div>
       <div class="proj-body">
-        <p>Won a hackathon building a SaaS platform that calculates corporate and industrial carbon footprint. The win led directly to an internship where I designed and collaborated on the development of the actual product frontend.</p>
-        <div class="proj-meta">Hackathon Winner → Frontend Intern</div>
+        <p>Gané un hackathon construyendo una plataforma SaaS que calcula huella de carbono corporativa e industrial. La victoria se convirtió en un internship donde diseñé y colaboré en el frontend del producto real.</p>
+        <div class="proj-meta">Hackathon → Frontend Intern</div>
       </div>
     </article>
 
     <article class="proj reveal rd-1">
       <div class="proj-num">002</div>
       <div>
-        <h3 class="proj-title">Algorithmic Performance Analysis</h3>
+        <h3 class="proj-title">Análisis algorítmico</h3>
         <div class="proj-tags">
           <span class="proj-tag">C++</span>
           <span class="proj-tag">Big O</span>
         </div>
       </div>
       <div class="proj-body">
-        <p>C++ log management system over ~16,800 real security entries with timestamp-based search. Benchmarked binary insertion against Merge Sort on load — both using binary search for retrieval. Empirical results confirmed theoretical complexity.</p>
-        <div class="proj-meta">16,800 entries, Theory verified</div>
+        <p>Sistema de gestión de logs en C++ sobre ~16,800 entradas reales con búsqueda por timestamp. Comparé inserción binaria contra Merge Sort en carga — ambos con búsqueda binaria. Resultados empíricos confirmaron la teoría.</p>
+        <div class="proj-meta">16,800 entradas · Teoría verificada</div>
       </div>
     </article>
 
@@ -656,8 +648,8 @@
         </div>
       </div>
       <div class="proj-body">
-        <p>Streaming catalog in C++ applying inheritance and polymorphism through a Tecflix base class and Movies derived class. Persistent data storage via CSV file.</p>
-        <div class="proj-meta">OOP, CSV Persistence</div>
+        <p>Catálogo de streaming en C++ aplicando herencia y polimorfismo. Persistencia vía archivo CSV.</p>
+        <div class="proj-meta">OOP · Persistencia CSV</div>
       </div>
     </article>
 
@@ -667,43 +659,42 @@
         <h3 class="proj-title">Downhill México</h3>
         <div class="proj-tags">
           <span class="proj-tag">HTML/CSS/JS</span>
-          <span class="proj-tag">Google Maps API</span>
+          <span class="proj-tag">Google Maps</span>
         </div>
       </div>
       <div class="proj-body">
-        <p>Official website for Downhill México. The largest downhill mountain bike competition in the country. Built the full platform: athlete profiles, event listings, and live map integration.</p>
-        <div class="proj-meta">Official Platform, Live in Production</div>
+        <p>Sitio oficial de Downhill México — la competencia de ciclismo de montaña más grande del país. Construí la plataforma completa: perfiles de atletas, calendario y mapas en vivo.</p>
+        <div class="proj-meta">Plataforma oficial · En producción</div>
       </div>
     </article>
 
     <article class="proj reveal rd-1">
       <div class="proj-num">005</div>
       <div>
-        <h3 class="proj-title">Music Recommendation Engine</h3>
+        <h3 class="proj-title">Motor de recomendación</h3>
         <div class="proj-tags">
           <span class="proj-tag">Python</span>
           <span class="proj-tag">ML</span>
-          <span class="proj-tag">Pandas</span>
         </div>
       </div>
       <div class="proj-body">
-        <p>Recommendation engine using cosine similarity across 500+ tracks.</p>
-        <div class="proj-meta">500+ tracks analyzed</div>
+        <p>Motor de recomendación musical usando similitud coseno sobre 500+ tracks.</p>
+        <div class="proj-meta">500+ tracks analizados</div>
       </div>
     </article>
 
     <article class="proj reveal rd-2">
       <div class="proj-num">006</div>
       <div>
-        <h3 class="proj-title">Computational Modeling</h3>
+        <h3 class="proj-title">Modelado computacional</h3>
         <div class="proj-tags">
           <span class="proj-tag">MATLAB</span>
-          <span class="proj-tag">Numerical Methods</span>
+          <span class="proj-tag">Numerical</span>
         </div>
       </div>
       <div class="proj-body">
-        <p>Simulated magnetic field behavior, validating physical results via the improved Euler method.</p>
-        <div class="proj-meta">Physics-validated results</div>
+        <p>Simulación de campos magnéticos validando resultados físicos mediante método de Euler mejorado.</p>
+        <div class="proj-meta">Físicamente validado</div>
       </div>
     </article>
 
@@ -713,25 +704,25 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="section-head reveal">
-    <span class="section-kicker">About</span>
+    <span class="section-kicker">Sobre mí</span>
     <span class="section-num">02 / 05</span>
   </div>
-  <h2 class="section-title reveal rd-1">Who <span class="muted">I am.</span></h2>
+  <h2 class="section-title reveal rd-1">Quién <span class="muted">soy.</span></h2>
 
   <div class="about-wrap">
     <aside class="about-aside reveal rd-1">
-      <span class="about-degree">Computer Technologies Eng.<br>Tec de Monterrey</span>
+      <span class="about-degree">Ing. Tec. Computacionales<br>Tec de Monterrey</span>
       <div class="pill-row">
-        <span class="pill">Client-first</span>
-        <span class="pill">Ships under pressure</span>
-        <span class="pill">Self-taught</span>
+        <span class="pill">Cliente primero</span>
+        <span class="pill">Envía bajo presión</span>
+        <span class="pill">Autodidacta</span>
         <span class="pill">ES / EN</span>
       </div>
     </aside>
 
     <div class="about-body reveal rd-2">
-      <p>I turn requirements into systems. From understanding what a client actually needs to delivering something they can rely on. I won a company hackathon, went straight into an internship, and <strong>have shipped production code in a real product.</strong></p>
-      <p class="muted">I work in teams by default, better solutions come from well-coordinated people, not lone contributors. I lead when the project needs direction and step back when someone else has the better answer.</p>
+      <p>Convierto requerimientos en sistemas — desde entender qué necesita un cliente hasta entregar algo en lo que pueda confiar. Gané un hackathon de empresa, entré directo a un internship, y <strong>he enviado código de producción en un producto real.</strong></p>
+      <p class="muted">Trabajo en equipo por default — las mejores soluciones vienen de gente bien coordinada, no de contribuidores solitarios. Lidero cuando el proyecto necesita dirección y me hago a un lado cuando alguien más tiene la mejor respuesta.</p>
     </div>
   </div>
 </section>
@@ -739,26 +730,26 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-head reveal">
-    <span class="section-kicker">Experience</span>
+    <span class="section-kicker">Experiencia</span>
     <span class="section-num">03 / 05</span>
   </div>
-  <h2 class="section-title reveal rd-1">Where I've <span class="muted">shipped.</span></h2>
+  <h2 class="section-title reveal rd-1">Dónde <span class="muted">he enviado.</span></h2>
 
   <div class="timeline">
     <div class="tl-item reveal">
-      <div class="tl-date">Jun — Aug 2025</div>
+      <div class="tl-date">Jun — Ago 2025</div>
       <div>
-        <h3 class="tl-role">Intern, Frontend Developer</h3>
+        <h3 class="tl-role">Intern · Frontend Developer</h3>
         <div class="tl-company">Bono</div>
-        <p class="tl-desc">Designed and collaborated on the development of a carbon footprint SaaS platform, contributing specifically to the frontend. Role came directly from winning the company hackathon.</p>
+        <p class="tl-desc">Diseñé y colaboré en el desarrollo de una plataforma SaaS de huella de carbono, contribuyendo al frontend. El rol llegó por ganar el hackathon de la empresa.</p>
       </div>
     </div>
     <div class="tl-item reveal rd-1">
-      <div class="tl-date">Jun 2025 — Present</div>
+      <div class="tl-date">Jun 2025 — presente</div>
       <div>
-        <h3 class="tl-role">Administrative Team</h3>
-        <div class="tl-company">COPARMEX, University Chapter</div>
-        <p class="tl-desc">Co-organized business networking events connecting Tec talent with industry leaders. Managed logistics, communications, and coordination across departments.</p>
+        <h3 class="tl-role">Administrativo</h3>
+        <div class="tl-company">COPARMEX · Capítulo Universitario</div>
+        <p class="tl-desc">Co-organicé eventos de networking empresarial conectando talento del Tec con líderes de industria. Gestioné logística, comunicaciones y coordinación entre departamentos.</p>
       </div>
     </div>
   </div>
@@ -770,32 +761,32 @@
     <span class="section-kicker">Skills</span>
     <span class="section-num">04 / 05</span>
   </div>
-  <h2 class="section-title reveal rd-1">What I <span class="muted">work with.</span></h2>
+  <h2 class="section-title reveal rd-1">Con qué <span class="muted">trabajo.</span></h2>
 
   <div class="skills-grid">
     <div class="reveal">
-      <div class="skills-col-title">Languages</div>
-      <div class="skill-row">C++</div>
-      <div class="skill-row">Python</div>
-      <div class="skill-row">JavaScript</div>
-      <div class="skill-row">HTML / CSS</div>
-      <div class="skill-row">SQL</div>
+      <div class="skills-col-title">Lenguajes</div>
+      <div class="skill-row">C++ <span class="lvl">PRIM.</span></div>
+      <div class="skill-row">Python <span class="lvl">FLU.</span></div>
+      <div class="skill-row">JavaScript <span class="lvl">FLU.</span></div>
+      <div class="skill-row">HTML / CSS <span class="lvl">FLU.</span></div>
+      <div class="skill-row">SQL <span class="lvl">INT.</span></div>
     </div>
     <div class="reveal rd-1">
-      <div class="skills-col-title">Tools</div>
-      <div class="skill-row">Git</div>
-      <div class="skill-row">React</div>
-      <div class="skill-row">Node.js</div>
-      <div class="skill-row">VS Code</div>
-      <div class="skill-row">REST APIs</div>
+      <div class="skills-col-title">Herramientas</div>
+      <div class="skill-row">Git <span class="lvl">FLU.</span></div>
+      <div class="skill-row">React <span class="lvl">INT.</span></div>
+      <div class="skill-row">Node.js <span class="lvl">INT.</span></div>
+      <div class="skill-row">VS Code <span class="lvl">DIARIO</span></div>
+      <div class="skill-row">REST APIs <span class="lvl">FLU.</span></div>
     </div>
     <div class="reveal rd-2">
-      <div class="skills-col-title">Concepts</div>
-      <div class="skill-row">Data Structures</div>
-      <div class="skill-row">Algorithms</div>
-      <div class="skill-row">OOP</div>
-      <div class="skill-row">IoT</div>
-      <div class="skill-row">CCNA</div>
+      <div class="skills-col-title">Conceptos</div>
+      <div class="skill-row">OOP <span class="lvl">SÓLIDO</span></div>
+      <div class="skill-row">Estructuras <span class="lvl">SÓLIDO</span></div>
+      <div class="skill-row">Algoritmos <span class="lvl">SÓLIDO</span></div>
+      <div class="skill-row">IoT <span class="lvl">INT.</span></div>
+      <div class="skill-row">CCNA <span class="lvl">CERT.</span></div>
     </div>
   </div>
 </section>
@@ -804,37 +795,37 @@
 <section id="contact">
   <div class="contact-inner">
     <div class="reveal">
-      <h2 class="contact-title">Have an idea?<br><span class="muted">Let's build it.</span></h2>
-      <p class="contact-lede">I'm looking for internship opportunities and interesting projects. If you have something in mind, reach out.</p>
+      <h2 class="contact-title">¿Tienes una idea?<br><span class="muted">Construyámosla.</span></h2>
+      <p class="contact-lede">Busco oportunidades de internship y proyectos interesantes. Si tienes algo en mente, escríbeme.</p>
       <a href="mailto:loor200529@gmail.com" class="contact-email">loor200529@gmail.com</a>
       <div class="hero-socials">
         <a href="https://github.com/Leonardou-lab" target="_blank" class="hero-social">GitHub<span>↗</span></a>
-        <a href="https://www.linkedin.com/in/leonardo-andr%C3%A9-flores-mendoza-2519a2366" target="_blank" class="hero-social">LinkedIn<span>↗</span></a>
+        <a href="https://www.linkedin.com/in/leonardo-andré-flores-mendoza-2519a2366" target="_blank" class="hero-social">LinkedIn<span>↗</span></a>
       </div>
     </div>
     <form class="contact-form reveal rd-1" onsubmit="handleForm(event)">
       <div class="form-row">
         <div class="form-group">
-          <label>Name</label>
-          <input type="text" name="name" placeholder="Your name" required>
+          <label>Nombre</label>
+          <input type="text" name="name" placeholder="Tu nombre" required>
         </div>
         <div class="form-group">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="you@example.com" required>
+          <label>Correo</label>
+          <input type="email" name="email" placeholder="tu@correo.com" required>
         </div>
       </div>
       <div class="form-group">
-        <label>Message</label>
-        <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+        <label>Mensaje</label>
+        <textarea name="message" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
       </div>
-      <button class="form-submit" type="submit">Send Message →</button>
+      <button class="form-submit" type="submit">Enviar mensaje →</button>
     </form>
   </div>
-  <footer>Built in <em>Mexico City</em> LF</footer>
+  <footer>Hecho en <em>Monterrey</em> · MMXXVI · LF</footer>
 </section>
 
 <script>
-  /* Cursor with smooth follow */
+  /* Cursor minimal con seguimiento suave */
   (function(){
     const outline=document.getElementById('c-outline');
     const dot=document.getElementById('c-dot');
@@ -889,26 +880,15 @@
   },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  /* Mobile menu */
   document.getElementById('mobileToggle')?.addEventListener('click',()=>{
     document.getElementById('navLinks').classList.toggle('mobile-open');
   });
 
-  (function(){
-    const el = document.getElementById('availability-status');
-    if (!el) return;
-    const now = new Date();
-    const month = now.toLocaleString('en-US', { month: 'long' });
-    const year = now.getFullYear();
-    el.textContent = `Available — ${month} ${year}`;
-  })();
-
-  /* Contact form */
   function handleForm(e){
     e.preventDefault();
     const btn=e.target.querySelector('.form-submit');
-    btn.textContent='Message sent ✓';
-    setTimeout(()=>{btn.textContent='Send Message →';e.target.reset()},3500);
+    btn.textContent='Mensaje enviado ✓';
+    setTimeout(()=>{btn.textContent='Enviar mensaje →';e.target.reset()},3500);
   }
 </script>
 </body>

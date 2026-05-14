@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Variaciones — Leonardo Flores</title>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&f[]=jetbrains-mono@400&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:'Switzer',sans-serif}
+  .frame{
+    width:1280px;height:820px;
+    background:#000;position:relative;overflow:hidden;
+  }
+  .frame iframe{
+    width:1600px;height:1025px;border:0;
+    transform:scale(0.8);transform-origin:top left;
+    pointer-events:none;
+  }
+  .badge{
+    position:absolute;top:14px;left:14px;z-index:10;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    background:rgba(0,0,0,.75);color:#fff;
+    padding:6px 12px;border:1px solid rgba(255,255,255,.25);
+  }
+  .open-btn{
+    position:absolute;bottom:14px;right:14px;z-index:10;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    background:#fff;color:#000;padding:8px 14px;
+    text-decoration:none;pointer-events:auto;
+  }
+  .intro h1{font-size:42px;font-weight:500;margin:0 0 .5rem;letter-spacing:-.02em}
+  .intro p,.intro ul{font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.75;color:#333}
+  .intro ul{padding-left:1rem}
+  .swatch{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:6px;border:1px solid rgba(0,0,0,.15)}
+</style>
+</head>
+<body>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<div id="root"></div>
+<script type="text/babel">
+  function App(){
+    return (
+      <DesignCanvas>
+        <div className="intro" style={{padding:'0 60px 40px',maxWidth:760}}>
+          <h1>Dos propuestas <span style={{color:'#8FA88C'}}>minimalistas</span> modernas</h1>
+          <p style={{marginBottom:14}}>
+            Misma estructura limpia. Tipografía: <b>Switzer</b> (alternativa libre de Fraktion — grotesk geométrica idéntica en proporciones) + <b>JetBrains Mono</b> para metadatos.
+          </p>
+          <p style={{marginBottom:8,fontWeight:600}}>Cambios desde la versión anterior:</p>
+          <ul style={{marginTop:0,marginBottom:16}}>
+            <li><b>Cursor</b>: círculo minimal que sigue con inercia + punto central. Crece al pasar sobre elementos interactivos. Mix-blend difference para legibilidad automática.</li>
+            <li><b>Tipografía</b>: Switzer (Fraktion-like, moderna y geométrica) en vez de Instrument Serif.</li>
+            <li><b>Feel general</b>: bordes sutiles, pills redondeadas, espaciado generoso, menos ornamentación editorial.</li>
+          </ul>
+          <p style={{marginBottom:8,fontWeight:600}}>Efectos conservados (no-AI):</p>
+          <ul style={{marginTop:0}}>
+            <li>Grano de película sutil (overlay).</li>
+            <li>Reveal con ink-bleed (letras desenfocadas que se resuelven).</li>
+            <li>Pulse ring en indicador de estado.</li>
+            <li>Cursor custom con inercia + estado hover.</li>
+          </ul>
+        </div>
+
+        <DCSection title="Opción A — Verde mate + sage" subtitle="Bg #1A2420 · acento #8FA88C. La que pediste. Tono de bosque en sombra, sobrio, muy poco visto en portfolios.">
+          <DCArtboard label="v3-verde-mate/index.html" width={1280} height={820}>
+            <div className="frame">
+              <span className="badge">
+                <span className="swatch" style={{background:'#1A2420'}}></span>
+                <span className="swatch" style={{background:'#8FA88C'}}></span>
+                Verde mate
+              </span>
+              <iframe src="v3-verde-mate/index.html"></iframe>
+              <a className="open-btn" href="v3-verde-mate/index.html" target="_blank">Abrir ↗</a>
+            </div>
+          </DCArtboard>
+          <DCPostIt top={-10} left={1300} rotate={2} width={230}>
+            Lectura: sereno, profesional, distinto. El sage mate contra el verde oscuro se siente arquitectónico, tipo estudio de diseño escandinavo.
+          </DCPostIt>
+        </DCSection>
+
+        <DCSection title="Opción B — Midnight + coral mate" subtitle="Bg #141821 · acento #E89D7C. Mi recomendación alternativa. Azul-gris profundo con un coral apagado — combinación rara, con más calidez que el oliva.">
+          <DCArtboard label="v4-midnight/index.html" width={1280} height={820}>
+            <div className="frame">
+              <span className="badge">
+                <span className="swatch" style={{background:'#141821'}}></span>
+                <span className="swatch" style={{background:'#E89D7C'}}></span>
+                Midnight + coral
+              </span>
+              <iframe src="v4-midnight/index.html"></iframe>
+              <a className="open-btn" href="v4-midnight/index.html" target="_blank">Abrir ↗</a>
+            </div>
+          </DCArtboard>
+          <DCPostIt top={-10} left={1300} rotate={-2} width={230}>
+            Por qué funciona: el coral contra el midnight es el único combo de "dark mode" que no se ve a IA. Calidez humana sobre frío técnico.
+          </DCPostIt>
+        </DCSection>
+
+        <div style={{padding:'0 60px 60px',maxWidth:760}}>
+          <p className="intro" style={{fontFamily:'JetBrains Mono,monospace',fontSize:12,lineHeight:1.75,color:'#333'}}>
+            <b>Tip:</b> los iframes bloquean el cursor custom. Haz click en <b>Abrir ↗</b> para ver cada una con todos los efectos activos.
+          </p>
+        </div>
+      </DesignCanvas>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
