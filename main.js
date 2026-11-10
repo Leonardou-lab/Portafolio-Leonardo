@@ -14,7 +14,7 @@
     requestAnimationFrame(tick);
   }
   tick();
-  document.querySelectorAll('a,button,input,textarea,.proj,.pill,.skill-row').forEach(el=>{
+  document.querySelectorAll('a,button,input,textarea,.proj,.other-item,.pill,.skill-row').forEach(el=>{
     el.addEventListener('mouseenter',()=>outline.classList.add('hover'));
     el.addEventListener('mouseleave',()=>outline.classList.remove('hover'));
   });
@@ -67,10 +67,16 @@ document.getElementById('mobileToggle')?.addEventListener('click',()=>{
   el.textContent = `Available — ${month} ${year}`;
 })();
 
-/* Contact form */
+/* Contact form: there is no backend, so hand the message to the visitor's email app */
 function handleForm(e){
   e.preventDefault();
-  const btn=e.target.querySelector('.form-submit');
-  btn.textContent='Message sent ✓';
-  setTimeout(()=>{btn.textContent='Send Message →';e.target.reset()},3500);
+  const f=e.target;
+  const field=n=>f.elements.namedItem(n).value.trim();
+  const name=field('name'),email=field('email'),message=field('message');
+  const subject=`Portfolio contact — ${name}`;
+  const body=`${message}\n\n— ${name} (${email})`;
+  location.href=`mailto:loor200529@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const btn=f.querySelector('.form-submit');
+  btn.textContent='Opening your email app…';
+  setTimeout(()=>{btn.textContent='Send Message →'},3500);
 }

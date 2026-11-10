@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Leonardo Flores — Software Engineer</title>
+<meta name="description" content="Leonardo Flores — Computer Technologies Engineering student at Tec de Monterrey. Full-stack projects with Next.js, React, Node.js, PostgreSQL and C++.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&f[]=jetbrains-mono@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,7 +29,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="mailto:loor200529@gmail.com" class="nav-cta">Let's Work →</a>
-  <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -45,15 +47,15 @@
       <span class="line2 ink-reveal" data-text="Flores."></span>
     </h1>
     <p class="hero-role">
-      <b>Computer Technologies Engineer</b>. I turn requirements into systems people actually use. No unnecessary decoration.
+      <b>Computer Technologies Engineering student</b> at Tec de Monterrey. I turn requirements into systems people actually use. No unnecessary decoration.
     </p>
     <div class="hero-ctas">
       <a href="#projects" class="btn btn-primary">See Work <span class="arrow">→</span></a>
       <a href="LeonardoFloresCV.pdf" class="btn btn-ghost" download>Download CV <span class="arrow">↓</span></a>
     </div>
     <div class="hero-socials">
-      <a href="https://github.com/Leonardou-lab" target="_blank" class="hero-social">GitHub<span>↗</span></a>
-      <a href="https://www.linkedin.com/in/leonardo-andr%C3%A9-flores-mendoza-2519a2366" target="_blank" class="hero-social">LinkedIn<span>↗</span></a>
+      <a href="https://github.com/Leonardou-lab" target="_blank" rel="noopener" class="hero-social">GitHub<span>↗</span></a>
+      <a href="https://www.linkedin.com/in/leonardo-andr%C3%A9-flores-mendoza-2519a2366" target="_blank" rel="noopener" class="hero-social">LinkedIn<span>↗</span></a>
       <a href="mailto:loor200529@gmail.com" class="hero-social">Email<span>↗</span></a>
     </div>
   </div>
@@ -96,97 +98,138 @@
   <div class="projects">
 
     <article class="proj reveal">
-      <div class="proj-num">001</div>
+      <div class="proj-num">001<span class="proj-year">2026</span></div>
       <div>
-        <h3 class="proj-title">Bono, Carbon Footprint Platform</h3>
+        <h3 class="proj-title">Radyex</h3>
+        <p class="proj-sub">Clinical platform for a dental radiology clinic</p>
         <div class="proj-tags">
-          <span class="proj-tag">Python</span>
-          <span class="proj-tag">UI Design</span>
+          <span class="proj-tag">Next.js</span>
+          <span class="proj-tag">TypeScript</span>
+          <span class="proj-tag">PostgreSQL</span>
+          <span class="proj-tag">RBAC</span>
         </div>
       </div>
       <div class="proj-body">
-        <p>Won a hackathon building a SaaS platform that calculates corporate and industrial carbon footprint. The win led directly to an internship where I designed and collaborated on the development of the actual product frontend.</p>
-        <div class="proj-meta">Hackathon Winner → Frontend Intern</div>
-      </div>
-    </article>
-
-    <article class="proj reveal rd-1">
-      <div class="proj-num">002</div>
-      <div>
-        <h3 class="proj-title">Algorithmic Performance Analysis</h3>
-        <div class="proj-tags">
-          <span class="proj-tag">C++</span>
-          <span class="proj-tag">Big O</span>
-        </div>
-      </div>
-      <div class="proj-body">
-        <p>C++ log management system over ~16,800 real security entries with timestamp-based search. Benchmarked binary insertion against Merge Sort on load — both using binary search for retrieval. Empirical results confirmed theoretical complexity.</p>
-        <div class="proj-meta">16,800 entries, Theory verified</div>
-      </div>
-    </article>
-
-    <article class="proj reveal rd-2">
-      <div class="proj-num">003</div>
-      <div>
-        <h3 class="proj-title">Tecflix</h3>
-        <div class="proj-tags">
-          <span class="proj-tag">C++</span>
-          <span class="proj-tag">OOP</span>
-          <span class="proj-tag">CSV</span>
-        </div>
-      </div>
-      <div class="proj-body">
-        <p>Streaming catalog in C++ applying inheritance and polymorphism through a Tecflix base class and Movies derived class. Persistent data storage via CSV file.</p>
-        <div class="proj-meta">OOP, CSV Persistence</div>
+        <p>Full-stack platform that took a dental radiology clinic off paper. Referring doctors now order studies online and get results delivered straight to their profile.</p>
+        <ul class="proj-points">
+          <li>Referral orders went from 10 minutes on paper, plus an in-person pickup about a week later, to 5 minutes online.</li>
+          <li>Replaced physical patient archives with searchable digital records, cutting file retrieval from up to 5 hours to minutes.</li>
+          <li>Built end to end: patient records, radiograph upload and download, scheduling, role-based access for admins, staff and doctors, and an admin reporting panel.</li>
+        </ul>
+        <div class="proj-meta">Retrieval: 5 h → minutes</div>
       </div>
     </article>
 
     <article class="proj reveal">
-      <div class="proj-num">004</div>
+      <div class="proj-num">002<span class="proj-year">2025</span></div>
       <div>
         <h3 class="proj-title">Downhill México</h3>
+        <p class="proj-sub">Full-stack platform for a mountain bike competition</p>
         <div class="proj-tags">
-          <span class="proj-tag">HTML/CSS/JS</span>
-          <span class="proj-tag">Google Maps API</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">HTML/CSS</span>
+          <span class="proj-tag">PostgreSQL</span>
+          <span class="proj-tag">REST APIs</span>
         </div>
       </div>
       <div class="proj-body">
-        <p>Official website for Downhill México. The largest downhill mountain bike competition in the country. Built the full platform: athlete profiles, event listings, and live map integration.</p>
-        <div class="proj-meta">Official Platform, Live in Production</div>
+        <p>Designed and built the competition organization's platform from scratch, front to back.</p>
+        <ul class="proj-points">
+          <li>Frontend: event calendar, athlete profiles, real-time standings table, photo gallery and news section.</li>
+          <li>Backend: session-based authentication, SQL database, REST API integration and server-side push notifications.</li>
+          <li>Contributed to a 30% increase in registered competitors in its first season.</li>
+        </ul>
+        <div class="proj-meta">+30% competitors, Live in production</div>
       </div>
     </article>
 
-    <article class="proj reveal rd-1">
-      <div class="proj-num">005</div>
+    <article class="proj reveal">
+      <div class="proj-num">003<span class="proj-year">2025</span></div>
       <div>
-        <h3 class="proj-title">Music Recommendation Engine</h3>
+        <h3 class="proj-title">Bono</h3>
+        <p class="proj-sub">Carbon footprint SaaS platform</p>
         <div class="proj-tags">
-          <span class="proj-tag">Python</span>
-          <span class="proj-tag">ML</span>
-          <span class="proj-tag">Pandas</span>
+          <span class="proj-tag">React</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">HTML/CSS</span>
         </div>
       </div>
       <div class="proj-body">
-        <p>Recommendation engine using cosine similarity across 500+ tracks.</p>
-        <div class="proj-meta">500+ tracks analyzed</div>
+        <p>Spotted a gap in corporate carbon accounting and architected a SaaS platform to close it. It won the company hackathon and turned into a direct internship offer.</p>
+        <ul class="proj-points">
+          <li>Designed and built 10+ production React components with real business logic.</li>
+          <li>Worked with the technical team on user-facing features, from requirement definition to deployment.</li>
+        </ul>
+        <div class="proj-meta">Hackathon Winner → Frontend Intern</div>
       </div>
     </article>
 
-    <article class="proj reveal rd-2">
-      <div class="proj-num">006</div>
+    <article class="proj reveal">
+      <div class="proj-num">004<span class="proj-year">2025</span></div>
       <div>
-        <h3 class="proj-title">Computational Modeling</h3>
+        <h3 class="proj-title">Authentication Log Search System</h3>
+        <p class="proj-sub">Sorting and search performance study</p>
         <div class="proj-tags">
-          <span class="proj-tag">MATLAB</span>
-          <span class="proj-tag">Numerical Methods</span>
+          <span class="proj-tag">C++</span>
+          <span class="proj-tag">Merge Sort</span>
+          <span class="proj-tag">Binary Search</span>
+          <span class="proj-tag">Big O</span>
         </div>
       </div>
       <div class="proj-body">
-        <p>Simulated magnetic field behavior, validating physical results via the improved Euler method.</p>
-        <div class="proj-meta">Physics-validated results</div>
+        <p>C++ system that processes ~20,000 security log entries with timestamp-based interval and count queries.</p>
+        <ul class="proj-points">
+          <li>Compared two strategies behind a polymorphic interface: binary insertion sort (O(n) per insert, always sorted) vs. Merge Sort on full load (O(n log n)).</li>
+          <li>Both use binary search for O(log n) retrieval. Single-insert and batch-insert benchmarks confirmed the theoretical complexity.</li>
+        </ul>
+        <div class="proj-meta">~20,000 entries, Theory verified</div>
       </div>
     </article>
 
+    <article class="proj reveal">
+      <div class="proj-num">005<span class="proj-year">2025</span></div>
+      <div>
+        <h3 class="proj-title">The Coward King</h3>
+        <p class="proj-sub">Full-stack roguelite game with a relational database</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Node.js / Express</span>
+          <span class="proj-tag">MySQL</span>
+          <span class="proj-tag">REST APIs</span>
+          <span class="proj-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <p>A fully playable roguelite with original characters, lore and mechanics, built by a team of 3 using Scrum.</p>
+        <ul class="proj-points">
+          <li>Covered the full cycle: functional and non-functional requirements, sprint planning and task assignment.</li>
+          <li>Designed the MySQL database with stored procedures and triggers, connected to the game through a Node.js/Express REST API.</li>
+          <li>Built player and community statistics with SQL joins and aggregations.</li>
+        </ul>
+        <div class="proj-meta">Team of 3, Scrum</div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="other reveal">
+    <div class="other-head">Also built</div>
+    <div class="other-list">
+      <div class="other-item">
+        <h3 class="other-title">Tecflix</h3>
+        <div class="other-tags">C++ · OOP · CSV</div>
+        <p>Streaming catalog applying inheritance and polymorphism, with CSV persistence.</p>
+      </div>
+      <div class="other-item">
+        <h3 class="other-title">Music Recommendation Engine</h3>
+        <div class="other-tags">Python · Pandas · ML</div>
+        <p>Cosine-similarity recommendations across 500+ tracks.</p>
+      </div>
+      <div class="other-item">
+        <h3 class="other-title">Computational Modeling</h3>
+        <div class="other-tags">MATLAB · Numerical Methods</div>
+        <p>Magnetic field simulation, validated with the improved Euler method.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -200,7 +243,11 @@
 
   <div class="about-wrap">
     <aside class="about-aside reveal rd-1">
-      <span class="about-degree">Computer Technologies Eng.<br>Tec de Monterrey</span>
+      <span class="about-degree">B.Eng. Computer Technologies<br>Tec de Monterrey</span>
+      <div class="about-stats">
+        <div><span class="stat-val">93<small>/100</small></span><span class="stat-lbl">GPA</span></div>
+        <div><span class="stat-val">2028</span><span class="stat-lbl">Graduation</span></div>
+      </div>
       <div class="pill-row">
         <span class="pill">Client-first</span>
         <span class="pill">Ships under pressure</span>
@@ -210,7 +257,7 @@
     </aside>
 
     <div class="about-body reveal rd-2">
-      <p>I turn requirements into systems. From understanding what a client actually needs to delivering something they can rely on. I won a company hackathon, went straight into an internship, and <strong>have shipped production code in a real product.</strong></p>
+      <p>I turn requirements into systems. From understanding what a client actually needs to delivering something they can rely on. I've built full-stack platforms for real clients, a dental radiology clinic and a mountain bike competition, and after winning a company hackathon I went straight into an internship where I <strong>shipped production code in a real product.</strong></p>
       <p class="muted">I work in teams by default, better solutions come from well-coordinated people, not lone contributors. I lead when the project needs direction and step back when someone else has the better answer.</p>
     </div>
   </div>
@@ -229,16 +276,24 @@
       <div class="tl-date">Jun — Aug 2025</div>
       <div>
         <h3 class="tl-role">Intern, Frontend Developer</h3>
-        <div class="tl-company">Bono</div>
-        <p class="tl-desc">Designed and collaborated on the development of a carbon footprint SaaS platform, contributing specifically to the frontend. Role came directly from winning the company hackathon.</p>
+        <div class="tl-company">Bono · Mexico City</div>
+        <ul class="tl-points">
+          <li>Built and iterated on React components in a production codebase, incorporating code review feedback to meet the team's quality standards.</li>
+          <li>Joined client calls, captured requirements and turned non-technical feedback into development tasks delivered within sprint deadlines.</li>
+          <li>Bridged business and engineering so client expectations reached the product without losing technical feasibility.</li>
+        </ul>
       </div>
     </div>
     <div class="tl-item reveal rd-1">
-      <div class="tl-date">Jun 2025 — Present</div>
+      <div class="tl-date">Jun 2025 — 2026</div>
       <div>
-        <h3 class="tl-role">Administrative Team</h3>
-        <div class="tl-company">COPARMEX, University Chapter</div>
-        <p class="tl-desc">Co-organized business networking events connecting Tec talent with industry leaders. Managed logistics, communications, and coordination across departments.</p>
+        <h3 class="tl-role">Administrative Team Member</h3>
+        <div class="tl-company">COPARMEX University Chapter · Tec de Monterrey</div>
+        <ul class="tl-points">
+          <li>Led end-to-end execution of 3+ business networking events: speaker outreach, agenda coordination and cross-team logistics.</li>
+          <li>Primary point of contact between speakers, university stakeholders and internal teams, from planning to day-of execution.</li>
+          <li>Drove collaboration between academic and professional stakeholders, strengthening the chapter's network.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -258,24 +313,35 @@
       <div class="skill-row">C++</div>
       <div class="skill-row">Python</div>
       <div class="skill-row">JavaScript</div>
+      <div class="skill-row">TypeScript</div>
       <div class="skill-row">HTML / CSS</div>
       <div class="skill-row">SQL</div>
+      <div class="skill-row">MATLAB</div>
     </div>
     <div class="reveal rd-1">
-      <div class="skills-col-title">Tools</div>
-      <div class="skill-row">Git</div>
+      <div class="skills-col-title">Frameworks &amp; Tools</div>
       <div class="skill-row">React</div>
-      <div class="skill-row">Node.js</div>
+      <div class="skill-row">Next.js</div>
+      <div class="skill-row">Node.js / Express</div>
+      <div class="skill-row">Git</div>
       <div class="skill-row">VS Code</div>
-      <div class="skill-row">REST APIs</div>
     </div>
     <div class="reveal rd-2">
+      <div class="skills-col-title">Data</div>
+      <div class="skill-row">PostgreSQL</div>
+      <div class="skill-row">MySQL</div>
+      <div class="skill-row">Stored procedures &amp; triggers</div>
+      <div class="skill-row">Relational modeling</div>
+      <div class="skill-row">Pandas</div>
+    </div>
+    <div class="reveal rd-3">
       <div class="skills-col-title">Concepts</div>
-      <div class="skill-row">Data Structures</div>
-      <div class="skill-row">Algorithms</div>
+      <div class="skill-row">Data Structures &amp; Algorithms</div>
       <div class="skill-row">OOP</div>
-      <div class="skill-row">IoT</div>
-      <div class="skill-row">CCNA</div>
+      <div class="skill-row">Big O Analysis</div>
+      <div class="skill-row">REST APIs</div>
+      <div class="skill-row">Networking</div>
+      <div class="skill-row">Requirements Analysis</div>
     </div>
   </div>
 </section>
@@ -288,26 +354,27 @@
       <p class="contact-lede">I'm looking for internship opportunities and interesting projects. If you have something in mind, reach out.</p>
       <a href="mailto:loor200529@gmail.com" class="contact-email">loor200529@gmail.com</a>
       <div class="hero-socials">
-        <a href="https://github.com/Leonardou-lab" target="_blank" class="hero-social">GitHub<span>↗</span></a>
-        <a href="https://www.linkedin.com/in/leonardo-andr%C3%A9-flores-mendoza-2519a2366" target="_blank" class="hero-social">LinkedIn<span>↗</span></a>
+        <a href="https://github.com/Leonardou-lab" target="_blank" rel="noopener" class="hero-social">GitHub<span>↗</span></a>
+        <a href="https://www.linkedin.com/in/leonardo-andr%C3%A9-flores-mendoza-2519a2366" target="_blank" rel="noopener" class="hero-social">LinkedIn<span>↗</span></a>
       </div>
     </div>
     <form class="contact-form reveal rd-1" onsubmit="handleForm(event)">
       <div class="form-row">
         <div class="form-group">
-          <label>Name</label>
-          <input type="text" name="name" placeholder="Your name" required>
+          <label for="f-name">Name</label>
+          <input id="f-name" type="text" name="name" placeholder="Your name" required>
         </div>
         <div class="form-group">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="you@example.com" required>
+          <label for="f-email">Email</label>
+          <input id="f-email" type="email" name="email" placeholder="you@example.com" required>
         </div>
       </div>
       <div class="form-group">
-        <label>Message</label>
-        <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+        <label for="f-message">Message</label>
+        <textarea id="f-message" name="message" placeholder="Tell me about your project..." required></textarea>
       </div>
       <button class="form-submit" type="submit">Send Message →</button>
+      <p class="form-note">Opens your email app with the message ready to send.</p>
     </form>
   </div>
   <footer>Built in <em>Mexico City</em> LF</footer>

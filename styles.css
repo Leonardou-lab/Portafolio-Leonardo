@@ -347,10 +347,56 @@ section{
   display:inline-flex;align-items:center;gap:.5rem;
 }
 .proj-meta::before{content:'→';color:var(--ink-faint)}
+.proj-year{
+  display:block;margin-top:.5rem;
+  color:var(--ink-mute);
+}
+.proj-sub{
+  font-size:.92rem;color:var(--ink-mute);
+  line-height:1.45;margin:-.3rem 0 1rem;
+}
+.proj-points{list-style:none;margin:0 0 1.2rem}
+.proj-points li,.tl-points li{
+  position:relative;
+  padding-left:1.1rem;
+  font-size:.92rem;line-height:1.6;
+  color:var(--ink-mute);
+}
+.proj-points li+li,.tl-points li+li{margin-top:.5rem}
+.proj-points li::before,.tl-points li::before{
+  content:'';position:absolute;left:0;top:.72em;
+  width:6px;height:1px;background:var(--accent);
+}
 @media (max-width:900px){
   .proj{grid-template-columns:1fr;gap:1rem;padding:2rem 1rem}
   .proj:hover{padding-left:1rem}
+  .proj-num{display:flex;gap:.8rem}
+  .proj-year{margin-top:0}
 }
+
+/* Other work */
+.other{margin-top:4rem}
+.other-head{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-mute);
+  padding-bottom:1rem;
+  border-bottom:1px solid var(--rule);
+}
+.other-list{display:grid;grid-template-columns:repeat(3,1fr);gap:0 2.5rem}
+.other-item{padding:1.6rem 0;border-bottom:1px solid var(--ink-faint)}
+.other-title{
+  font-family:'Switzer',sans-serif;
+  font-size:1.1rem;font-weight:500;letter-spacing:-.01em;
+  margin-bottom:.4rem;
+}
+.other-tags{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.7rem;
+}
+.other-item p{font-size:.92rem;color:var(--ink-mute);line-height:1.6}
+@media (max-width:900px){.other-list{grid-template-columns:1fr}}
 
 /* ─── ABOUT ─── */
 .about-wrap{
@@ -372,6 +418,23 @@ section{
 }
 .about-body p.muted{color:var(--ink-mute);font-size:1rem}
 .about-body strong{color:var(--accent-bright);font-weight:500}
+.about-stats{
+  display:flex;gap:2.5rem;
+  margin-top:1.5rem;padding-top:1.5rem;
+  border-top:1px solid var(--rule);
+}
+.about-stats>div{display:flex;flex-direction:column;gap:.3rem}
+.stat-val{
+  font-family:'Switzer',sans-serif;
+  font-size:2rem;font-weight:500;letter-spacing:-.03em;line-height:1;
+  color:var(--ink);font-variant-numeric:tabular-nums;
+}
+.stat-val small{font-size:.9rem;color:var(--ink-mute);font-weight:400;letter-spacing:0}
+.stat-lbl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-mute);
+}
 .pill-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
 .pill{
   font-size:.78rem;font-weight:500;
@@ -410,12 +473,14 @@ section{
   margin-bottom:1rem;
 }
 .tl-desc{font-size:1rem;color:var(--ink-mute);line-height:1.65;max-width:62ch}
+.tl-points{list-style:none;max-width:62ch}
+.tl-points li{font-size:.98rem}
 @media (max-width:900px){
   .tl-item{grid-template-columns:1fr;gap:.8rem}
 }
 
 /* ─── SKILLS ─── */
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 4rem}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0 2.5rem}
 .skills-col-title{
   font-family:'JetBrains Mono',monospace;
   font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
@@ -438,10 +503,12 @@ section{
   font-size:.65rem;letter-spacing:.1em;
   color:var(--ink-mute);font-weight:400;
 }
-@media (max-width:900px){.skills-grid{grid-template-columns:1fr;gap:2rem}}
+@media (max-width:1024px){.skills-grid{grid-template-columns:repeat(2,1fr);gap:3rem 3rem}}
+@media (max-width:600px){.skills-grid{grid-template-columns:1fr;gap:2rem}}
 
 /* ─── CONTACT ─── */
 #contact{
+  max-width:none;
   background:var(--bg-2);
   border-top:1px solid var(--rule);
   padding:clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,4rem);
@@ -497,6 +564,7 @@ section{
   transition:all .25s;
 }
 .form-submit:hover{background:var(--accent-bright);transform:translateY(-2px)}
+.form-note{font-size:.78rem;color:var(--ink-mute);margin-top:-.4rem}
 @media (max-width:900px){.contact-inner{grid-template-columns:1fr;gap:3rem}.form-row{grid-template-columns:1fr}}
 
 footer{
